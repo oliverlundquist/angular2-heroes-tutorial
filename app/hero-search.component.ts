@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
+
 @Component({
   selector: 'hero-search',
   templateUrl: 'app/hero-search.component.html',
@@ -13,11 +14,15 @@ import { Hero } from './hero';
 export class HeroSearchComponent implements OnInit {
   heroes: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
+
   constructor(
     private heroSearchService: HeroSearchService,
-    private router: Router) {}
+    private router: Router) {
+  }
+
   // Push a search term into the observable stream.
   search(term: string) { this.searchTerms.next(term); }
+
   ngOnInit() {
     this.heroes = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
@@ -33,6 +38,7 @@ export class HeroSearchComponent implements OnInit {
         return Observable.of<Hero[]>([]);
       });
   }
+
   gotoDetail(hero: Hero) {
     let link = ['/detail', hero.id];
     this.router.navigate(link);

@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
 import { HeroDetailComponent } from './hero-detail.component';
@@ -14,17 +13,14 @@ const appRoutes: Routes = [
     component: DashboardComponent
   },
   {
-  path: 'detail/:id',
-  component: HeroDetailComponent
-},
-
+    path: 'detail/:id',
+    component: HeroDetailComponent
+  },
   {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
   }
-
-
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

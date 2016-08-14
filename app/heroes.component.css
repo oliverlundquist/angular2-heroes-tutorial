@@ -57,7 +57,9 @@ button {
 button:hover {
   background-color: #cfd8dc;
 }
-.error {color:red;}
+.error {
+  color:red;
+}
 button.delete-button{
   float:right;
   background-color: gray !important;
